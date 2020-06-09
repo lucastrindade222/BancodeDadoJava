@@ -52,6 +52,9 @@ public class livrosDAO {
 			stmt.setString(1, l.getNome());
 			stmt.setString(2,l.getAltor());
 			stmt.setString(3,l.getDescricao());
+			
+			System.out.println("Livro Salvo com sucesso!!!");
+			
 			stmt.execute();
 
 		} catch (SQLException e) {
@@ -84,5 +87,66 @@ public class livrosDAO {
 			throw new Exception("Erro ao buscar os contatos.");
 		}
 	}
+	
+	
+	
+	
+public void atualizar(Livros livros) {
+		
+		
+		try {
+			String sql="UPDATE livros SET  nome=?,altor=?,descricao=? WHERE ID=?;";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			
+			stmt.setString(1, livros.getNome());
+			stmt.setString(2,livros.getAltor());
+			stmt.setString(3,livros.getDescricao());
+			stmt.setInt(4, livros.getID());
+			
+			System.out.println("O livro foi atualzado.");
+			stmt.execute();
+			
+		
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	public void deletar(Integer ID) {
+		
+		
+		try {
+			String sql= "DELETE FROM  livros WHERE  ID="+ID+"";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			stmt.execute();
+			
+			System.out.println("Livor com o ID:"+ID+",foi deletado.");
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 
 }
