@@ -46,12 +46,13 @@ public class livrosDAO {
 	public void salvar(Livros l) throws Exception{
 
 		try {
-			String sql =  "INSERT INTO livros (nome, altor,descricao) values (?, ?, ?)";
+			String sql =  "INSERT INTO livros (nome, autor,descricao,Valor) values (?, ?, ?,?)";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
 			stmt.setString(1, l.getNome());
-			stmt.setString(2,l.getAltor());
+			stmt.setString(2,l.getAutor());
 			stmt.setString(3,l.getDescricao());
+			stmt.setString(4, l.getValor());
 			
 			System.out.println("Livro Salvo com sucesso!!!");
 			
@@ -67,7 +68,7 @@ public class livrosDAO {
 	public List<Livros> buscarContatos() throws Exception {
 		try {
 			List<Livros> Li = new ArrayList<>();
-			String sql = "SELECT * FROM livros ORDER BY nome ASC";
+			String sql = "SELECT * FROM livros ORDER BY ID ASC";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			
@@ -76,10 +77,13 @@ public class livrosDAO {
 				Livros livro = new Livros();
 				livro.setID(rs.getInt("ID"));
 				livro.setNome(rs.getString("nome"));
-				livro.setAltor(rs.getString("altor"));
+				livro.setAutor(rs.getString("autor"));
 				livro.setDescricao(rs.getString("descricao"));
+				livro.setValor(rs.getString("Valor"));
 				Li.add(livro);
 			}
+			
+			
 			rs.close();
 			return Li;
 		} catch (SQLException e) {
@@ -95,15 +99,15 @@ public void atualizar(Livros livros) {
 		
 		
 		try {
-			String sql="UPDATE livros SET  nome=?,altor=?,descricao=? WHERE ID=?;";
+			String sql="UPDATE livros SET  nome=?,autor=?,descricao=?,Valor=? WHERE ID=?;";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
 			
 			stmt.setString(1, livros.getNome());
-			stmt.setString(2,livros.getAltor());
+			stmt.setString(2,livros.getAutor());
 			stmt.setString(3,livros.getDescricao());
-			stmt.setInt(4, livros.getID());
-			
+			stmt.setString(4, livros.getValor());
+			stmt.setInt(5, livros.getID());
 			System.out.println("O livro foi atualzado.");
 			stmt.execute();
 			

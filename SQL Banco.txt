@@ -3,7 +3,6 @@ default char set utf8
 default collate utf8_general_ci;
 
 use livraria;
-
 create table livros(
 
 
@@ -11,9 +10,11 @@ create table livros(
 
         ID integer primary key auto_increment,
 	    nome varchar(40),
-	    altor varchar(40),
-	    descricao text
+	    autor varchar(40),
+	    descricao text,
+        Valor varchar(40)
 
-);
+)
+
 
 select * from   livros;

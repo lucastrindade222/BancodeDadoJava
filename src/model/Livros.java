@@ -6,9 +6,9 @@ public class Livros {
 	
 	private Integer ID;
 	private String nome;
-	private String altor;
+	private String autor;
 	private String descricao;
-	
+	private String Valor;
 	
 	
 	
@@ -37,11 +37,11 @@ public class Livros {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getAltor() {
-		return altor;
+	public String getAutor() {
+		return autor;
 	}
-	public void setAltor(String altor) {
-		this.altor = altor;
+	public void setAutor(String altor) {
+		this.autor = altor;
 	}
 	public String getDescricao() {
 		return descricao;
@@ -50,8 +50,13 @@ public class Livros {
 		this.descricao = descricao;
 	}
 	
-	
-	
+
+	public String getValor() {
+		return Valor;
+	}
+	public void setValor(String valor) {
+		Valor = valor;
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
