@@ -60,7 +60,7 @@ public class livrosDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("Erro ao salvar um contato");
+			throw new Exception("Erro ao salvar um Livro");
 		}
 
 	}
@@ -88,7 +88,7 @@ public class livrosDAO {
 			return Li;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("Erro ao buscar os contatos.");
+			throw new Exception("Erro ao buscar os Livro.");
 		}
 	}
 	
@@ -115,8 +115,9 @@ public void atualizar(Livros livros) {
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		  System.out.println("ERRO a atualizar:"+e);
 			e.printStackTrace();
+			 
 		}
 		
 		
@@ -140,7 +141,7 @@ public void atualizar(Livros livros) {
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.out.println("ERRO a deletar:"+e);
 			e.printStackTrace();
 		}
 		
