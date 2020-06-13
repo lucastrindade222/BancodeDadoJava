@@ -19,28 +19,10 @@ public class Controle_livro {
 		System.out.println("testt");
 
 		carregarLivros();
+		home.ref(home);
 	}
 
-	public void te() {
-		System.out.println("ff");
-	}
-	
-	
-	public void salvarB() {
-  System.out.println("salvar é salvar");
-		try {
-			livrosDAO doa = new livrosDAO();
-			Livros li = getContatoTela();
-			doa.salvar(li);
-
-			
-
-		} catch (Exception ex) {
-			 System.out.println("salvar é salvar"+ ex);
-			ex.printStackTrace();
-
-		}
-	}
+	 
 
 
 	public Livros getContatoTela() {

@@ -2,6 +2,7 @@ package view;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
@@ -119,6 +120,7 @@ public class Cadastrar  extends javax.swing.JFrame  {
 	        li.setValor(Valor.getText());
 	    	 
 	         obj.salvarB(li);
+	         JOptionPane.showMessageDialog(null, "Livro Salvo ");
 	         this.dispose();
 	    }                                          
 

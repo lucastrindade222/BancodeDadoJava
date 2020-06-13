@@ -11,9 +11,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import controller.Controle_livro;
 import model.Livros;
 
-public class Home extends JFrame {
+public class Home extends  javax.swing.JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	private JLabel lbNome;
@@ -24,8 +25,12 @@ public class Home extends JFrame {
 	private JTable tabela;
 	private DefaultTableModel modelo = new DefaultTableModel();
 	private JButton Atualizar;
+	private Home home;
+	
+	
 
 	public Home() {
+		 
 		this.setTitle("Livraria");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
@@ -70,36 +75,48 @@ public class Home extends JFrame {
 			}
 		});
 
+		
+		
+		JButton Refresh = new JButton("Refresh");
+		Refresh.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+				
+				 
+		 home.dispose();
+			   
+		 Home h = new Home();
+			h.setVisible(true);
+
+			new Controle_livro(h);
+				 
+			}
+		});
+		
+		
+		
+		
+		
+		
 		this.lbNome.setBounds(313, 11, 150, 20);
-		
-
-		
-		
-
 		this.btCadastrar.setBounds(37, 492, 200, 25);
 
 		criarTabela();
 		barraRolagem = new JScrollPane(tabela);
 		barraRolagem.setBounds(37, 42, 580, 420);
-
 		getContentPane().add(lbNome);
-		
- 
-		
-
 		getContentPane().add(btCadastrar);
-
 		getContentPane().add(barraRolagem);
-		
-		
 		btnDelet.setBounds(530, 493, 89, 23);
-		
 		
 		getContentPane().add(btnDelet);
 		
 		
 		Atualizar.setBounds(398, 493, 89, 23);
 		getContentPane().add(Atualizar);
+		Refresh.setBounds(267, 493, 89, 23);
+		getContentPane().add(Refresh);
+	
 		
 		
 	}
@@ -111,6 +128,7 @@ public class Home extends JFrame {
 	}
 
 	private void criarTabela() {
+		
 		tabela = new JTable(modelo);
 		modelo.addColumn("id");
 		modelo.addColumn("Nome");
@@ -129,10 +147,25 @@ public class Home extends JFrame {
 		modelo.addRow(new Object[] { livro.getID(), livro.getNome(),livro.getAutor(),livro.getDescricao(),livro.getValor() });
 	}
 	
+	
+	public void ref(Home h) {
+		this.home = h;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public void limparTabela() {
-		  
+		modelo.setRowCount(0);  
+		
 	
 	}
+  
 	
 	public JLabel getLbNome() {
 		return lbNome;
@@ -194,7 +227,4 @@ public class Home extends JFrame {
 	public void setBtnDelet(JButton btnDelet) {
 		this.btnDelet = btnDelet;
 	}
-	
-	
-	
 }

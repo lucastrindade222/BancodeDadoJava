@@ -3,6 +3,7 @@ package view;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
@@ -36,7 +37,7 @@ public class Deletar extends javax.swing.JFrame {
         id = new JTextField();
         id.setColumns(10);
         
-        JLabel lblNewLabel = new JLabel("Informe qual \u00E9 o livro que vc deseja deletar");
+        JLabel lblNewLabel = new JLabel("Informe o livro que voc\u00EA deseja deletar");
         
         JLabel lblNewLabel_1 = new JLabel("ID do livro");
 
@@ -81,6 +82,7 @@ public class Deletar extends javax.swing.JFrame {
     	ControleDeletar d = new ControleDeletar();
     	Integer id= Integer.parseInt(this.id.getText()) ;                        
         d.Deletar(id);
+        JOptionPane.showMessageDialog(null, "Livro deletado.");
         this.dispose();
     
 
